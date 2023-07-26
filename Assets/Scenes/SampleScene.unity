@@ -769,7 +769,7 @@ MonoBehaviour:
   direction: 0
   speedIndicator: {fileID: 2036744859}
   speedDiffrenceThreshold: 10
-  speedIncrement: 5
+  speedIncrement: 10
   minSpeed: 75
 --- !u!114 &1291220872
 MonoBehaviour:
@@ -1073,7 +1073,7 @@ MonoBehaviour:
   direction: 1
   speedIndicator: {fileID: 766059376}
   speedDiffrenceThreshold: 10
-  speedIncrement: 5
+  speedIncrement: 10
   minSpeed: 75
 --- !u!114 &1945114690
 MonoBehaviour:
