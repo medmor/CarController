@@ -21,9 +21,10 @@ public class RequestManager : MonoBehaviour
         }
     }
 
-    public virtual void Awake()
+
+    private void Awake()
     {
-        Instance = this;
+        instance = this;
     }
 
     public void SendRequest(string command)
@@ -35,12 +36,12 @@ public class RequestManager : MonoBehaviour
     {
         List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
 
-        UnityWebRequest www = UnityWebRequest.Post(baseUrl + command, formData);
-        yield return www.SendWebRequest();
+        UnityWebRequest request = UnityWebRequest.Post(baseUrl + command, formData);
+        yield return request.SendWebRequest();
 
-        if (www.result != UnityWebRequest.Result.Success)
+        if (request.result != UnityWebRequest.Result.Success)
         {
-            Debug.Log(www.error);
+            Debug.Log(request.error);
         }
     }
 }
