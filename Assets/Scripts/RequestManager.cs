@@ -21,7 +21,6 @@ public class RequestManager : MonoBehaviour
         }
     }
 
-
     private void Awake()
     {
         instance = this;
