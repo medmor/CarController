@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+using TMPro;
 public class RunController : MonoBehaviour
 {
     enum Directions { forward, backward }
@@ -9,6 +10,7 @@ public class RunController : MonoBehaviour
     [SerializeField] private float speedDiffrenceThreshold = 10;
     [SerializeField] private float speedIncrement = 5;
     [SerializeField] private float minSpeed = 50;
+    [SerializeField] private TextMeshProUGUI speedText;
 
     private float speed = 0;
     private float lastSpeed = 0;
@@ -27,11 +29,11 @@ public class RunController : MonoBehaviour
             {
                 speed = 100;
             }
-            UpdateSpeedIndicator();
-            if (Mathf.Abs(speed - lastSpeed) > speedDiffrenceThreshold)
+            if (Mathf.Abs(speed - lastSpeed) > speedDiffrenceThreshold || speed == 100)
             {
+                UpdateSpeedIndicator();
                 lastSpeed = speed;
-                RequestManager.Instance.SendRequest(direction + "/" + (int)speed);
+                //RequestManager.Instance.SendRequest(direction + "/" + (int)speed);
             }
 
         }
@@ -40,7 +42,7 @@ public class RunController : MonoBehaviour
             speed = 0;
             lastSpeed = 0;
             UpdateSpeedIndicator();
-            RequestManager.Instance.SendRequest("stop"); UpdateSpeedIndicator();
+            //RequestManager.Instance.SendRequest("stop"); UpdateSpeedIndicator();
         }
 
     }
@@ -54,7 +56,8 @@ public class RunController : MonoBehaviour
     }
     private void UpdateSpeedIndicator()
     {
-        speedIndicator.fillAmount = speed * .01f;
+        //speedIndicator.fillAmount = speed * .01f;
+        speedText.text = ((int)speed).ToString();
     }
 }
 
