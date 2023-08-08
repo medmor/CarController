@@ -33,7 +33,7 @@ public class RunController : MonoBehaviour
             {
                 UpdateSpeedIndicator();
                 lastSpeed = speed;
-                //RequestManager.Instance.SendRequest(direction + "/" + (int)speed);
+                RequestManager.Instance.SendRequest(direction + "/" + (int)speed);
             }
 
         }
@@ -42,7 +42,7 @@ public class RunController : MonoBehaviour
             speed = 0;
             lastSpeed = 0;
             UpdateSpeedIndicator();
-            //RequestManager.Instance.SendRequest("stop"); UpdateSpeedIndicator();
+            RequestManager.Instance.SendRequest("stop"); UpdateSpeedIndicator();
         }
 
     }
@@ -56,7 +56,6 @@ public class RunController : MonoBehaviour
     }
     private void UpdateSpeedIndicator()
     {
-        //speedIndicator.fillAmount = speed * .01f;
         speedText.text = ((int)speed).ToString();
     }
 }
